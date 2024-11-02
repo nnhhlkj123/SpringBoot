@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org "xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{admin/layout_admin.html}">
+
+<head>
+</head>
+
+<body>
+
+	<!-- Content -->
+	<div layout:fragment="content"> <!-- Định nghĩa fragment cho nội dung -->
+		<div class="row">
+			<div class="col text-center">
+				<h1>Chào mừng đến với trang chủ admin</h1>
+				<p>Nhấn vào nút bên dưới để chuyển đến trang Category.</p>
+				<a th:href="@{/admin/categories}" class="btn btn-primary">Category</a>
+			</div>
+		</div>
+	</div>
+
+</body>
+
+</html>

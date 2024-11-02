@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body>
+
+	<!-- Header Fragment -->
+	<div th:fragment="header">
+		<header class="bg-light text-center py-4">
+			<img th:src="@{/images/tải xuống.jpg}" alt="Header Image" class="img-fluid" />
+		</header>
+	</div>
+
+	<!-- Footer Fragment -->
+	<div th:fragment="footer">
+		<footer class="bg-light text-center py-4">
+			<p>Họ và tên: <strong>Nguyễn Ngọc Hiếu Hảo</strong></p>
+			<p>MSSV: <strong>22133015</strong></p>
+			<p>Email: <strong>nguyenngochieuhao@gmail.com</strong></p>
+			<p>SĐT: <strong>0392711377</strong></p>
+		</footer>
+	</div>
+
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org "xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
+layout:decorate="~{admin/layout_admin.html}">
+
+<head>
+</head>
+
+<body>
+
+	<!-- Content -->
+	<div layout:fragment="content" class="container mt-4">
+		<h2 th:text="${category.isEdit} ? 'Edit Category' : 'Add Category'"></h2>
+		<form th:action="@{/admin/categories/save}" method="post" enctype="multipart/form-data">
+			<input type="hidden" th:value="${category.isEdit}" name="isEdit">
+			<input type="hidden" th:value="${category.id}" name="id">
+
+			<div class="form-group">
+				<label for="categoryname">Category name:</label>
+				<input type="text" id="categoryname" name="name" th:value="${category.name}" class="form-control">
+			</div>
+
+			<div class="form-group">
+				<label for="images">Link images:</label>
+				<input type="text" id="images" name="images" th:value="${category.images}" class="form-control">
+			</div>
+
+			<div class="form-group">
+				<label for="status">Status</label><br>
+				<input type="radio" id="ston" name="status" value="1" th:checked="${category.status == 1}">
+				<label for="ston">Hoạt động</label><br>
+				<input type="radio" id="stoff" name="status" value="0" th:checked="${category.status == 0}">
+				<label for="stoff">Khóa</label>
+			</div>
+
+			<div class="form-group">
+				<input type="submit" th:value="${category.isEdit} ? 'Update' : 'Insert'" class="btn btn-primary">
+			</div>
+		</form>
+	</div>
+
+</body>
+
+</html>
