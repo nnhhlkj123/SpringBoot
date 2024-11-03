@@ -1,8 +1,10 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org "xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
-layout:decorate="~{admin/layout_admin.html}">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{admin/layout_admin.html}">
 
 <head>
+	<meta charset="UTF-8">
+	<title th:text="${category.isEdit} ? 'Edit Category' : 'Add Category'"></title>
 </head>
 
 <body>
@@ -20,8 +22,14 @@ layout:decorate="~{admin/layout_admin.html}">
 			</div>
 
 			<div class="form-group">
-				<label for="images">Link images:</label>
-				<input type="text" id="images" name="images" th:value="${category.images}" class="form-control">
+				<label for="images">Upload images:</label>
+				<input type="file" id="images" name="images" class="form-control">
+				<!-- Display current image if editing -->
+				<div th:if="${category.images}">
+					<p>Current Image:</p>
+					<img th:src="@{/uploads/images/{filename}(filename=${category.images})}" height="100"
+						alt="Current Image" />
+				</div>
 			</div>
 
 			<div class="form-group">

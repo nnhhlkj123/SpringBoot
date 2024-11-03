@@ -22,4 +22,5 @@ public class Category {
 	@Column(name="images",columnDefinition = "nvarchar(500)")
 	private String images;
 	private int status;
+	
 }

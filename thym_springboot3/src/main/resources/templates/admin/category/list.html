@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{admin/layout_admin.html}">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Category List</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body>
+	<div layout:fragment="content" class="container mt-4">
+		<a th:href="@{/admin/category/add}" class="btn btn-primary mb-3">Add Category</a>
+		<hr>
+		
+		<!-- Search Form -->
+		<form th:action="@{/admin/categories/searchpaginated}" method="get" class="form-inline mb-3">
+			<input type="text" name="name" id="name" placeholder="Nhập từ khóa để tìm" class="form-control mr-2" />
+			<button type="submit" class="btn btn-secondary">Search</button>
+		</form>
+		
+		<!-- Category Table -->
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th>STT</th>
+					<th>Images</th>
+					<th>Category ID</th>
+					<th>Category Name</th>
+					<th>Status</th>
+					<th>Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="cate, status : ${list}">
+					<td th:text="${status.index + 1}"></td>
+					
+					<!-- Display Image -->
+					<td>
+						<div th:if="${cate.images}">
+							<img th:src="@{/uploads/images/{filename}(filename=${cate.images})}" alt="Category Image" height="60" />
+						</div>
+						<div th:if="${!cate.images}">
+							<p>No Image</p>
+						</div>
+					</td>
+					
+					<td th:text="${cate.Id}"></td>
+					<td th:text="${cate.name}"></td>
+					<td th:text="${cate.status == 1 ? 'Active' : 'Inactive'}"></td>
+					<td>
+						<a th:href="@{/admin/category/edit(id=${cate.Id})}" class="btn btn-warning btn-sm">Edit</a>
+						<a th:href="@{/admin/category/delete(id=${cate.Id})}" class="btn btn-danger btn-sm">Delete</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>

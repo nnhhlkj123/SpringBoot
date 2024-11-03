@@ -38,6 +38,9 @@ public class CategoryController {
 	@RequestMapping("")
 	public String all(Model model) {
 		List<Category> list = categoryService.findAll();
+		for (Category category : list) {
+	        System.out.println(category.getName()); // In ra thuộc tính name của mỗi category
+	    }
 		model.addAttribute("list", list);
 		return "admin/category/category-list";
 	}

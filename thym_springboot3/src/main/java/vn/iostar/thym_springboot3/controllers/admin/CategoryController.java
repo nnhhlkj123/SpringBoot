@@ -40,7 +40,7 @@ public class CategoryController {
 	public String all(Model model) {
 		List<Category> list = categoryService.findAll();
 		model.addAttribute("list", list);
-		return "admin/category/category-list";
+		return "admin/category/list";
 	}
 
 	@GetMapping("/add")
@@ -111,7 +111,9 @@ public class CategoryController {
 
 		Pageable pageable = PageRequest.of(currentPage - 1, pageSize, Sort.by("name"));
 
-		Page<Category> resultPage = null;
+		Page<Category> resultPage = Page.empty(pageable);
+		 System.out.println("Total elements: " + resultPage.getTotalElements());
+		    System.out.println("Total pages: " + resultPage.getTotalPages());
 
 		if (StringUtils.hasText(name)) {
 
@@ -120,7 +122,6 @@ public class CategoryController {
 			model.addAttribute("name", name);
 
 		} else {
-
 			resultPage = categoryService.findAll(pageable);
 
 		}
@@ -152,6 +153,8 @@ public class CategoryController {
 			model.addAttribute("pageNumbers", pageNumbers);
 
 		}
+		System.out.println("Total elements: " + resultPage.getTotalElements());
+	    System.out.println("Total pages: " + resultPage.getTotalPages());
 
 		model.addAttribute("categoryPage", resultPage);
 
